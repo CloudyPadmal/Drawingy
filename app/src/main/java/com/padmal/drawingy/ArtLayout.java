@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -23,6 +24,8 @@ public class ArtLayout extends View {
     private Paint paint;
 
     private List<Point> points;
+
+    private Path path = new Path();
 
     public ArtLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,16 +47,23 @@ public class ArtLayout extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        for (Point point : points) {
-            canvas.drawCircle(point.x, point.y, 5, paint);
-        }
+        canvas.drawPath(path, paint);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float touchX = event.getX();
-        float touchY = event.getY();
-        points.add(new Point(Math.round(touchX), Math.round(touchY)));
+        float X = event.getX();
+        float Y = event.getY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                path.moveTo(X, Y);
+                return true;
+            case MotionEvent.ACTION_MOVE:
+                path.lineTo(X, Y);
+                break;
+            default:
+                return false;
+        }
         // Redraw
         postInvalidate();
         return true;
