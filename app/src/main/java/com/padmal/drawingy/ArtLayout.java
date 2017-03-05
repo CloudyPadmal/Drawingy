@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ArtLayout extends View {
 
-    private final int color = Color.BLACK;
+    private int color = Color.BLACK;
 
     private Paint paint;
 
@@ -57,5 +57,25 @@ public class ArtLayout extends View {
         // Redraw
         postInvalidate();
         return true;
+    }
+
+    public void setDrawColor(String color) {
+
+        switch (color) {
+            case "Red":
+                this.color = Color.RED;
+                paint.setColor(this.color);
+                break;
+            case "Blue":
+                this.color = Color.BLUE;
+                paint.setColor(this.color);
+                break;
+            case "Green":
+                this.color = Color.GREEN;
+                paint.setColor(this.color);
+                break;
+            default:
+                break;
+        }
     }
 }

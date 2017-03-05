@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Drawingy</string>
+    <string name="change_color">Change Color</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
 </resources>
