@@ -75,17 +75,25 @@ public class ArtLayout extends View {
             case "Red":
                 this.color = Color.RED;
                 paint.setColor(this.color);
+                postInvalidate();
                 break;
             case "Blue":
                 this.color = Color.BLUE;
                 paint.setColor(this.color);
+                postInvalidate();
                 break;
             case "Green":
                 this.color = Color.GREEN;
                 paint.setColor(this.color);
+                postInvalidate();
                 break;
             default:
                 break;
         }
+    }
+
+    public void clearColor() {
+        path.reset();
+        postInvalidate();
     }
 }

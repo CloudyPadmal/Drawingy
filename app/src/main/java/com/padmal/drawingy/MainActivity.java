@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
 
+            case R.id.menu_clear_color:
+                artLayout.clearColor();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
